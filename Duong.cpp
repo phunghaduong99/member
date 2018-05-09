@@ -161,14 +161,5 @@ int main()
 		case 0: 
 					printf("\n0. Thoat chuong trinh");
 					break;
-		
 	}
-	
-
-
-
-
-
-
-
 }
