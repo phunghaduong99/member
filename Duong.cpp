@@ -105,14 +105,14 @@ int main()
 	
 	int i;
 	Nhap: ;
-	printf("\nChon muc tuong ung: ");
+	printf("\nChon cac chuc nang: ");
 	printf("\n0. Thoat chuong trinh. ");
 	printf("\n1. Them thanh vien. ");
 	printf("\n2. Xoa thanh vien. ");
 	printf("\n3. Tim thanh vien bang ID.");
 	printf("\n4. Sua thanh vien bang ID.");
 	A: ;
-	printf("\nMuc can chon la: ");
+	printf("\nChuc nang can chon la: ");
 	scanf("%d", &i);
 	if(i!=0 && i!=1 && i!= 2 && i!=3 &&i != 4)
 		{
