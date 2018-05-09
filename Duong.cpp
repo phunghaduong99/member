@@ -105,7 +105,7 @@ int main()
 	
 	int i;
 	Nhap: ;
-	printf("\nChon cac chuc nang: ");
+	printf("\nChon chuc nang tuong ung: ");
 	printf("\n0. Thoat chuong trinh. ");
 	printf("\n1. Them thanh vien. ");
 	printf("\n2. Xoa thanh vien. ");
@@ -162,4 +162,5 @@ int main()
 					goto Nhap;
 				}
 	}
+return 0;
 }
