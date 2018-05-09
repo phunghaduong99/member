@@ -6,7 +6,7 @@ struct sv {
 	int Age; 
 	int ID; 
 	int Group_id;
-	char Name[];
+	char Name[100];
 };
 
 int Scanf(sv *member)
