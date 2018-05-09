@@ -121,6 +121,9 @@ int main()
 		}
 	switch(i)
 	{
+		case 0: 
+					printf("\n0. Thoat chuong trinh");
+					break;
 		case 1: 
 				{	
 					int b;
@@ -158,8 +161,5 @@ int main()
 					Edit(&sv1[0], number, Find(&sv1[0],ID));
 					goto Nhap;
 				}
-		case 0: 
-					printf("\n0. Thoat chuong trinh");
-					break;
 	}
 }
