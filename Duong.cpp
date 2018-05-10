@@ -49,6 +49,9 @@ void Delete(sv *member, int *n, int member_a )
 	while( member_a  <= *n)
 	{
 		member->ID= (member+1)->ID;
+		member->Group_id = (member+1)->Group_id;
+		member->Age= (member+1)->Age;
+		strcpy(member->Name, (member+1)->Name);
 		member= member+1;
 		member_a = member_a+1;
 	}
