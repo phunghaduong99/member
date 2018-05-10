@@ -8,6 +8,7 @@ struct sv {
 	int Group_id;
 	char Name[100];
 };
+typedef struct sv sv;
 
 int Scanf(sv *member)
 {	
@@ -92,7 +93,6 @@ void Edit(sv *member, int number, int member_a)
 	else printf("\nNhap vao cac so 1,2,3,4. ");
 }
 
-
 int main()
 {	
 	sv sv1[100];
@@ -103,64 +103,69 @@ int main()
 	for(int i=0; i<n; i++)
 	Scanf(&sv1[i]); 
 	
-	int i;
-	Nhap: ;
-	printf("\nChon chuc nang tuong ung: ");
-	printf("\n0. Thoat chuong trinh. ");
-	printf("\n1. Them thanh vien. ");
-	printf("\n2. Xoa thanh vien. ");
-	printf("\n3. Tim thanh vien bang ID.");
-	printf("\n4. Sua thanh vien bang ID.");
-	A: ;
-	printf("\nChuc nang can chon la: ");
-	scanf("%d", &i);
-	if(i!=0 && i!=1 && i!= 2 && i!=3 &&i != 4)
-		{
-			printf("\nBan hay nhap vao 0, 1, 2, 3 hoac 4.");
-			goto A;
-		}
-	switch(i)
+	for(;;)
 	{
-		case 0: 
-					printf("\n0. Thoat chuong trinh");
-					break;
-		case 1: 
-				{	
-					int b;
-					printf("\nThem may thanh vien: ");
-					scanf("%d",&b);
-					Add(&sv1[2], &n, b);
-					goto Nhap;
-				}
-		case 2: 
-				{	
-					int ID;
-					printf("\nNhap vao ID thanh vien can xoa: ");
-					scanf("%d", &ID);
-					Delete(&sv1[0], &n, Find(&sv1[0],ID));	
-					goto Nhap;
-				}	
-		case 3: 
+		int i;
+		printf("\nChon chuc nang tuong ung: ");
+		printf("\n0. Thoat chuong trinh. ");
+		printf("\n1. Them thanh vien. ");
+		printf("\n2. Xoa thanh vien. ");
+		printf("\n3. Tim thanh vien bang ID.");
+		printf("\n4. Sua thanh vien bang ID.");
+		for(;;)
+		{
+		printf("\nChuc nang can chon la: ");
+		scanf("%d", &i);
+	
+			if(i!=0 && i!=1 && i!= 2 && i!=3 &&i != 4)
 				{
-					int ID;
-					printf("\nNhap vao ID thanh vien can tim: ");
-					scanf("%d", &ID);
-					Printf(&sv1[0], Find(&sv1[0], ID));
-					goto Nhap;
-				}	
-		case 4: 
-				{
-					int ID, number;
-					printf("\nNhap vao ID thanh vien can tim: ");
-					scanf("%d", &ID);
-					Printf(&sv1[0], Find(&sv1[0], ID));
-					printf("\nThong tin can sua la: ");
-					printf("\t1.ID \t2.Group_id \t3.Age \t4.Name");
-					printf("\nNhap vao 1,2,3 hoac 4: ");
-					scanf("%d", &number);
-					Edit(&sv1[0], number, Find(&sv1[0],ID));
-					goto Nhap;
+					printf("\nBan hay nhap vao 0, 1, 2, 3 hoac 4.");
+					continue;
 				}
-	}
+			else break;
+		}
+			if(i==1) 
+					{	
+						int b;
+						printf("\nThem may thanh vien: ");
+						scanf("%d",&b);
+						Add(&sv1[2], &n, b);
+						continue;
+					}
+			else if(i==2) 
+					{	
+						int ID;
+						printf("\nNhap vao ID thanh vien can xoa: ");
+						scanf("%d", &ID);
+						Delete(&sv1[0], &n, Find(&sv1[0],ID));	
+						continue;
+					}	
+			else if(i==3) 
+					{
+						int ID;
+						printf("\nNhap vao ID thanh vien can tim: ");
+						scanf("%d", &ID);
+						Printf(&sv1[0], Find(&sv1[0], ID));
+						continue;
+					}	
+			else if(i==4) 
+					{
+						int ID, number;
+						printf("\nNhap vao ID thanh vien can tim: ");
+						scanf("%d", &ID);
+						Printf(&sv1[0], Find(&sv1[0], ID));
+						printf("\nThong tin can sua la: ");
+						printf("\t1.ID \t2.Group_id \t3.Age \t4.Name");
+						printf("\nNhap vao 1,2,3 hoac 4: ");
+						scanf("%d", &number);
+						Edit(&sv1[0], number, Find(&sv1[0],ID));
+						continue;
+					}
+			else if(i==0)
+					{
+						printf("\nCam on vi da su dung chuong trinh.");
+						break;
+					}	
+	} 
 return 0;
 }
