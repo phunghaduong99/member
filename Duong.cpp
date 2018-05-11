@@ -61,8 +61,6 @@ void Delete(sv *member, int *n, int member_a )
 	*n= *n-1;
 }
 
-
-
 void Printf(sv *member, int member_a )
 {
 	member= member+ member_a;
