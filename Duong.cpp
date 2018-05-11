@@ -32,14 +32,17 @@ void Add(sv *member, int *n, int b)
 	*n= *n+b;
 }
 
-int Find(sv *member, int ID)
+int Find(sv *member, int *n, int ID)
 {	
-	int member_a;
-	while(ID != member->ID)
+	int member_a=1;
+	while(ID != member->ID && member_a<= (*n-1) )
 	{
 		member = member +1;
 		member_a= member_a+1;
 	}
+	if(ID != member->ID && member_a== *n)
+	{member_a= member_a +1; }
+	member_a = member_a -1;
 	return member_a;
 }
 
@@ -58,18 +61,7 @@ void Delete(sv *member, int *n, int member_a )
 	*n= *n-1;
 }
 
-int Check(sv *member, int *n, int ID)
-{
-	int a=0;
-	while(ID != member->ID && a<*n)
-		{
-			member= member+1;
-			a=a+1;
-		} 
-	if(a >= *n )
-	return 0;
-	else return 1;
-}
+
 
 void Printf(sv *member, int member_a )
 {
@@ -146,32 +138,32 @@ int main()
 						int b;
 						printf("\nThem may thanh vien: ");
 						scanf("%d",&b);
-						Add(&sv1[2], &n, b);
+						Add(&sv1[0], &n, b);
 						continue;
 					}
 			else if(i==2) 
 					{	
-						int ID;
+						int ID;			
 						do
 						{	
 							printf("\nNhap vao ID thanh vien can xoa: ");
 							scanf("%d", &ID);
-						} while(Check(&sv1[0], &n, ID)==0);
-						Delete(&sv1[0], &n, Find(&sv1[0],ID));	
+						} while(Find(&sv1[0], &n, ID) >=  n);
+						Delete(&sv1[0], &n, Find(&sv1[0], &n,ID));
 						continue;
 					}	
 			else if(i==3) 
-					{
+					{	
+					
 						int ID;
 						do
 						{	
-							printf("\nNhap vao ID thanh vien can tim:  ");
+							printf("\nNhap vao ID thanh vien can tim: ");
 							scanf("%d", &ID);
-						} while(Check(&sv1[0], &n, ID)==0);
-					//	printf("%d", ID);
-						Printf(&sv1[0], Find(&sv1[0], ID));
+						} while(Find(&sv1[0], &n, ID) >=  n);
+						Printf(&sv1[0], Find(&sv1[0], &n, ID));
+					
 						continue;
-						
 						
 					}	
 			else if(i==4) 
@@ -181,13 +173,13 @@ int main()
 						{	
 							printf("\nNhap vao ID thanh vien can sua: ");
 							scanf("%d", &ID);
-						} while(Check(&sv1[0], &n, ID)==0);
-						Printf(&sv1[0], Find(&sv1[0], ID));
+						} while(Find(&sv1[0], &n, ID) >=  n);
+						Printf(&sv1[0], Find(&sv1[0],&n, ID));
 						printf("\nThong tin can sua la: ");
 						printf("\t1.ID \t2.Group_id \t3.Age \t4.Name");
 						printf("\nNhap vao 1,2,3 hoac 4: ");
 						scanf("%d", &number);
-						Edit(&sv1[0], number, Find(&sv1[0],ID));
+						Edit(&sv1[0], number, Find(&sv1[0], &n,ID));
 						continue;
 					}
 			else if(i==0)
