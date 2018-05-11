@@ -121,6 +121,7 @@ int main()
 		printf("\n2. Xoa thanh vien. ");
 		printf("\n3. Tim thanh vien bang ID.");
 		printf("\n4. Sua thanh vien bang ID.");
+		
 		for(;;)
 		{
 		printf("\nChuc nang can chon la: ");
@@ -133,6 +134,7 @@ int main()
 				}
 			else break;
 		}
+		
 			if(i==1) 
 					{	
 						int b;
@@ -152,12 +154,11 @@ int main()
 						a = &sv1[Find(&sv1[0], &n, ID)].ID;
 						b= *a;
 						Delete(&sv1[0], &n, Find(&sv1[0], &n,ID));
-						printf("\nDa xoa thanh cong thanh vien co ID la: %d \n", b);
+						printf("\nDa xoa thanh cong thanh vien co ID la: %d", b);
 						continue;
 					}	
 			else if(i==3) 
 					{	
-					
 						int ID;
 						do
 						{	
@@ -165,9 +166,7 @@ int main()
 							scanf("%d", &ID);
 						} while(Find(&sv1[0], &n, ID) >=  n);
 						Printf(&sv1[0], Find(&sv1[0], &n, ID));
-					
 						continue;
-						
 					}	
 			else if(i==4) 
 					{
