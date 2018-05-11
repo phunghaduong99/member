@@ -38,7 +38,7 @@ int Find(sv *member, int ID)
 	while(ID != member->ID)
 	{
 		member = member +1;
-		member_a++;
+		member_a= member_a+1;
 	}
 	return member_a;
 }
@@ -165,11 +165,14 @@ int main()
 						int ID;
 						do
 						{	
-							printf("\nNhap vao ID thanh vien can tim: ");
+							printf("\nNhap vao ID thanh vien can tim:  ");
 							scanf("%d", &ID);
 						} while(Check(&sv1[0], &n, ID)==0);
+					//	printf("%d", ID);
 						Printf(&sv1[0], Find(&sv1[0], ID));
 						continue;
+						
+						
 					}	
 			else if(i==4) 
 					{
