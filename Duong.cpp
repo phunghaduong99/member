@@ -45,8 +45,8 @@ int Find(sv *member, int ID)
 
 void Delete(sv *member, int *n, int member_a )
 {
-	member = member+ member_a -1;
-	while( member_a  <= *n)
+	member = member+ member_a;
+	while( member_a  < *n)
 	{
 		member->ID= (member+1)->ID;
 		member->Group_id = (member+1)->Group_id;
@@ -58,6 +58,19 @@ void Delete(sv *member, int *n, int member_a )
 	*n= *n-1;
 }
 
+int Check(sv *member, int *n, int ID)
+{
+	int a=0;
+	while(ID != member->ID && a<*n)
+		{
+			member= member+1;
+			a=a+1;
+		} 
+	if(a >= *n )
+	return 0;
+	else return 1;
+}
+
 void Printf(sv *member, int member_a )
 {
 	member= member+ member_a;
@@ -66,7 +79,8 @@ void Printf(sv *member, int member_a )
 	printf("\nGroup_id la: %d", member->Group_id);
 	printf("\nAge la: %d", member->Age);
 	fflush(stdin);
-	printf("\nName la: %s \n", member->Name );
+	printf("\nName la: " );
+	puts(member->Name);
 }
 
 void Edit(sv *member, int number, int member_a)
@@ -138,24 +152,33 @@ int main()
 			else if(i==2) 
 					{	
 						int ID;
-						printf("\nNhap vao ID thanh vien can xoa: ");
-						scanf("%d", &ID);
+						do
+						{	
+							printf("\nNhap vao ID thanh vien can xoa: ");
+							scanf("%d", &ID);
+						} while(Check(&sv1[0], &n, ID)==0);
 						Delete(&sv1[0], &n, Find(&sv1[0],ID));	
 						continue;
 					}	
 			else if(i==3) 
 					{
 						int ID;
-						printf("\nNhap vao ID thanh vien can tim: ");
-						scanf("%d", &ID);
+						do
+						{	
+							printf("\nNhap vao ID thanh vien can tim: ");
+							scanf("%d", &ID);
+						} while(Check(&sv1[0], &n, ID)==0);
 						Printf(&sv1[0], Find(&sv1[0], ID));
 						continue;
 					}	
 			else if(i==4) 
 					{
 						int ID, number;
-						printf("\nNhap vao ID thanh vien can tim: ");
-						scanf("%d", &ID);
+						do
+						{	
+							printf("\nNhap vao ID thanh vien can sua: ");
+							scanf("%d", &ID);
+						} while(Check(&sv1[0], &n, ID)==0);
 						Printf(&sv1[0], Find(&sv1[0], ID));
 						printf("\nThong tin can sua la: ");
 						printf("\t1.ID \t2.Group_id \t3.Age \t4.Name");
