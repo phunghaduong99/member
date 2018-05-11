@@ -61,6 +61,8 @@ void Delete(sv *member, int *n, int member_a )
 	*n= *n-1;
 }
 
+
+
 void Printf(sv *member, int member_a )
 {
 	member= member+ member_a;
@@ -141,13 +143,16 @@ int main()
 					}
 			else if(i==2) 
 					{	
-						int ID;			
+						int *a,b, ID;			
 						do
 						{	
 							printf("\nNhap vao ID thanh vien can xoa: ");
 							scanf("%d", &ID);
 						} while(Find(&sv1[0], &n, ID) >=  n);
+						a = &sv1[Find(&sv1[0], &n, ID)].ID;
+						b= *a;
 						Delete(&sv1[0], &n, Find(&sv1[0], &n,ID));
+						printf("\nDa xoa thanh cong thanh vien co ID la: %d \n", b);
 						continue;
 					}	
 			else if(i==3) 
